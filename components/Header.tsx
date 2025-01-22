@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React from 'react';
-import { FaRegQuestionCircle, FaSearch } from 'react-icons/fa';
+import { FaInstagram, FaInstagramSquare, FaLinkedin, FaRegQuestionCircle, FaSearch, FaTelegram, FaTelegramPlane, FaYoutube, FaYoutubeSquare } from 'react-icons/fa';
 import { SignedIn, SignInButton, UserButton, SignedOut, useUser } from '@clerk/nextjs';
-
+import { AlertDialog, AlertDialogFooter, AlertDialogHeader } from './ui/alert-dialog';
+import { AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '@radix-ui/react-alert-dialog';
+import { X } from "lucide-react"
 const Header: React.FC = () => {
     const router = useRouter();
-    const { user } = useUser()
+
 
     interface Types {
         title: string;
@@ -39,13 +41,43 @@ const Header: React.FC = () => {
             </div>
             <div className='flex items-center gap-6'>
                 <button className='text-lg'><FaSearch /></button>
-                <Link href="/dashboard">
-                    <button className='text-lg'><FaRegQuestionCircle /></button>
-                </Link>
+                <div className='flex items-center text-xl'>
+                    <AlertDialog>
+                        <AlertDialogTrigger><FaRegQuestionCircle /></AlertDialogTrigger>
+                        <AlertDialogContent className='absolute top-4 bg-[#141414] z-50 right-2  w-[240px] p-8 rounded-lg text-sm'>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle className='text-center p-1 text-2xl'>Info</AlertDialogTitle>
+                                <AlertDialogDescription className='py-4'>
+                                    Thic clone has been created by <u className='font-semibold text-green-300'>Bo.</u> <br />
+                                    Contact: <b className=''>biohazardcoder@gmail.com</b>
+                                    <div className='flex text-2xl justify-evenly mt-4  '>
+                                        <Link href={"http://t.me/afterdarkwithbo"}>
+                                            <FaTelegram />
+                                        </Link>
+                                        <Link href={"https://www.youtube.com/@MagnitTasiri"}>
+                                            <FaYoutube />
+                                        </Link>
+                                        <Link href={"https://www.instagram.com/magnittasiri/"}>
+                                            <FaInstagramSquare />
+                                        </Link>
+                                        <Link href={"https://linkedin.com/in/husanbek-zayniddinov-4b0ab4347/"}>
+                                            <FaLinkedin />
+                                        </Link>
+                                    </div>
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogAction className=' flex items-center justify-center p-1 rounded-lg top-2 right-2 font-semibold absolute'>
+                                    <X />
+                                </AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </div>
                 <SignedIn>
-                    <Link href="/dashboard">
-                        <img src={user?.imageUrl} alt="avatar" className='w-10 border p-1 rounded-full' />
-                    </Link>
+                    <UserButton>
+
+                    </UserButton>
                 </SignedIn>
                 <SignedOut>
                     <div className='bg-[#fff] text-black rounded-lg py-1 px-2'>

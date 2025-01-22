@@ -6,7 +6,7 @@ export interface Buttons {
 
 export interface Games {
     photos: string[];
-    comments: string[];
+    comments: Comment[];
     title: string;
     device: string;
     category: string;
@@ -34,4 +34,27 @@ export interface Award {
 export interface Menu {
     title: string;
     url: string;
+}
+
+export interface Comment {
+    user: {
+        firstName: string,
+        lastName: string,
+        avatar: string,
+        email: string,
+    },
+    text: string
+    like: number,
+}
+
+export interface Items {
+    title: string,
+    icon: any
+}
+
+export interface User {
+    firstName: string | undefined | null,
+    lastName: string | undefined | null,
+    avatar: string | undefined,
+    email: string | undefined,
 }

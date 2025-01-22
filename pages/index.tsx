@@ -4,19 +4,32 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaLaptop, FaTabletAlt, FaTv } from "react-icons/fa";
 import { MdOutlineDesktopWindows, MdPhoneIphone, MdWatch } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Axios from "../middlewares/Axios";
 import Products from "@/components/Products";
 import { Buttons } from "@/middlewares/interfaces";
 import Footer from "@/components/Footer";
 import { useUser } from "@clerk/nextjs";
 import Cookies from "js-cookie";
+import { getError, getPending, getUserInfo } from "@/toolkits/UserSlicer";
 
 const Index = () => {
   const router = useRouter();
   const { device } = router.query;
+  const { isPending, isAuth, data } = useSelector((state: { user: { data: Object, isAuth: boolean, isPending: boolean } }) => state.user)
+  console.log(data);
+  console.log(isAuth);
+  console.log(isPending);
 
   const deviceString = typeof device === "string" ? device : "windows";
+  useEffect(() => {
+    if (device) {
+      setSelectedCategory(deviceString);
+    }
+  }, [device]);
+
+
+
   const { user, isSignedIn } = useUser();
   const [selectedCategory, setSelectedCategory] = useState(deviceString);
   const dispatch = useDispatch();
@@ -49,22 +62,32 @@ const Index = () => {
               avatar: user.imageUrl,
 
             });
-
             Cookies.set("user", data.token);
-            console.log(data.token);
           }
         } catch (error) {
           console.error('Error saving user data:', error);
         }
       };
-
-
-
       saveUserDataToMongoDB();
     }
   }, [isSignedIn, user]);
-  console.log(user);
 
+  useEffect(() => {
+    async function getMyData() {
+      try {
+        dispatch(getPending());
+        const response = (await Axios.get("client/me")).data;
+        if (response.data) {
+          dispatch(getUserInfo(response.data));
+        } else {
+          dispatch(getError("No user data available"));
+        }
+      } catch (error: any) {
+        dispatch(getError(error.response?.data || "Unknown Token"));
+      }
+    }
+    getMyData();
+  }, [dispatch]);
 
   const buttons: Buttons[] = [
     { title: "Windows", icon: <MdOutlineDesktopWindows />, path: "windows" },

@@ -49,7 +49,9 @@ const Header: React.FC = () => {
                 </SignedIn>
                 <SignedOut>
                     <div className='bg-[#fff] text-black rounded-lg py-1 px-2'>
-                        <SignInButton />
+                        <SignInButton mode='modal'   >
+                            Log in
+                        </SignInButton>
                     </div>
                 </SignedOut>
             </div>

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -29,6 +30,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -56,11 +58,94 @@
     --chart-5: 340 75% 55%
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.cl-card {
+  background-color: #181818;
+  color: #Fff;
+  border-radius: 0px;
+  height: 100%;
+}
+
+
+
+.cl-cardBox {
+  border-radius: 0px;
+  height: 100%;
+  color: #Fff;
+}
+
+.cl-headerTitle {
+  color: #Fff;
+}
+
+.cl-socialButtonsBlockButton {
+  background-color: #d7d7d7;
+  padding: 10px;
+}
+
+.cl-socialButtonsBlockButton:hover {
+  background-color: #fff;
+  transition: ease-in;
+}
+
+
+.cl-footer {
+  display: none;
+}
+
+.cl-socialButtons {
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+}
+
+.cl-socialButtonsBlockButtonText {
+  font-size: 14px;
+}
+
+.cl-internal-18u6q9q img {
+  width: 40px;
+  height: 30px;
+}
+
+.cl-navbarMobileMenuRow {
+  background: #181818;
+}
+
+.cl-navbarMobileMenuButton {
+  color: #fff;
+  box-shadow: 0;
+  border-radius: 0;
+}
+
+.cl-navbarMobileMenuButton:hover {
+  color: #fff;
+  border-radius: 0;
+  border: none;
+}
+
+.cl-navbarMobileMenuButton {
+  color: #fff;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.cl-internal-1dauvpw {
+  display: none;
+}
+
+.cl-internal-190cjq9 {
+  color: #000;
 }

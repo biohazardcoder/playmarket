@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaLaptop, FaTabletAlt, FaTv } from "react-icons/fa";
 import { MdOutlineDesktopWindows, MdPhoneIphone, MdWatch } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Axios from "../middlewares/Axios";
 import Products from "@/components/Products";
 import { Buttons } from "@/middlewares/interfaces";
@@ -12,14 +12,13 @@ import Footer from "@/components/Footer";
 import { useUser } from "@clerk/nextjs";
 import Cookies from "js-cookie";
 import { getError, getPending, getUserInfo } from "@/toolkits/UserSlicer";
+import CustomSignInModal from "@/components/ui/custom-signin";
 
 const Index = () => {
   const router = useRouter();
   const { device } = router.query;
-  const { isPending, isAuth, data } = useSelector((state: { user: { data: Object, isAuth: boolean, isPending: boolean } }) => state.user)
-  console.log(data);
-  console.log(isAuth);
-  console.log(isPending);
+
+
 
   const deviceString = typeof device === "string" ? device : "windows";
   useEffect(() => {

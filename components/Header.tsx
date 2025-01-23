@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React from 'react';
-import { FaInstagram, FaInstagramSquare, FaLinkedin, FaRegQuestionCircle, FaSearch, FaTelegram, FaTelegramPlane, FaYoutube, FaYoutubeSquare } from 'react-icons/fa';
-import { SignedIn, SignInButton, UserButton, SignedOut, useUser } from '@clerk/nextjs';
+import { FaInstagramSquare, FaLinkedin, FaRegQuestionCircle, FaSearch, FaTelegram, FaYoutube, } from 'react-icons/fa';
+import { SignInButton, UserButton, SignedOut, } from '@clerk/nextjs';
 import { AlertDialog, AlertDialogFooter, AlertDialogHeader } from './ui/alert-dialog';
 import { AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '@radix-ui/react-alert-dialog';
 import { X } from "lucide-react"
+
 const Header: React.FC = () => {
     const router = useRouter();
 
@@ -41,9 +42,9 @@ const Header: React.FC = () => {
             </div>
             <div className='flex items-center gap-6'>
                 <button className='text-lg'><FaSearch /></button>
-                <div className='flex items-center text-xl'>
+                <div className='flex items-center  text-xl'>
                     <AlertDialog>
-                        <AlertDialogTrigger><FaRegQuestionCircle /></AlertDialogTrigger>
+                        <AlertDialogTrigger className='cursor-pointer'><FaRegQuestionCircle /></AlertDialogTrigger>
                         <AlertDialogContent className='absolute top-4 bg-[#141414] z-50 right-2  w-[240px] p-8 rounded-lg text-sm'>
                             <AlertDialogHeader>
                                 <AlertDialogTitle className='text-center p-1 text-2xl'>Info</AlertDialogTitle>
@@ -74,14 +75,23 @@ const Header: React.FC = () => {
                         </AlertDialogContent>
                     </AlertDialog>
                 </div>
-                <SignedIn>
-                    <UserButton>
-
-                    </UserButton>
-                </SignedIn>
+                <UserButton
+                    appearance={{
+                        elements: {
+                            userButtonAvatarBox: "w-10 h-10 border-2 rounded-full",
+                            userButtonPopoverMain: "bg-[#141414] text-white text-2xl rounded-none",
+                            userButtonPopoverActions: "bg-white rounded-none flex flex-col ",
+                            userButtonPopoverFooter: "hidden",
+                            userButtonPopoverCard: "rounded-none",
+                            userButtonPopoverActionButton: "bg-[#141414] text-white hover:text-black",
+                        },
+                    }}
+                />
                 <SignedOut>
                     <div className='bg-[#fff] text-black rounded-lg py-1 px-2'>
-                        <SignInButton mode='modal'   >
+                        <SignInButton
+                            mode='modal'
+                        >
                             Log in
                         </SignInButton>
                     </div>

@@ -39,6 +39,7 @@ function ProductDetail() {
             })
             setText("");
             setLike(0);
+            window.location.reload()
         } catch (error: any) {
             setError(error.message);
         } finally {

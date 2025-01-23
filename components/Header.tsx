@@ -18,9 +18,6 @@ const Header: React.FC = () => {
 
     const LiData: Types[] = [
         { title: "Games", url: "/" },
-        { title: "Apps", url: "/apps" },
-        { title: "Movies", url: "/movies" },
-        { title: "Books", url: "/books" }
     ];
 
     return (
@@ -41,7 +38,6 @@ const Header: React.FC = () => {
                 </ul>
             </div>
             <div className='flex items-center gap-6'>
-                <button className='text-lg'><FaSearch /></button>
                 <div className='flex items-center  text-xl'>
                     <AlertDialog>
                         <AlertDialogTrigger className='cursor-pointer'><FaRegQuestionCircle /></AlertDialogTrigger>

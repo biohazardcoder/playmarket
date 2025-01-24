@@ -2,7 +2,7 @@ import { getProductError, getProductPending, getProductSuccess } from "@/toolkit
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { FaLaptop, FaTabletAlt, FaTv } from "react-icons/fa";
+import { FaTabletAlt, } from "react-icons/fa";
 import { MdOutlineDesktopWindows, MdPhoneIphone, MdWatch } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import Axios from "../middlewares/Axios";
@@ -91,9 +91,6 @@ const Index = () => {
     { title: "Windows", icon: <MdOutlineDesktopWindows />, path: "windows" },
     { title: "Phone", icon: <MdPhoneIphone />, path: "phone" },
     { title: "Tablet", icon: <FaTabletAlt />, path: "tablet" },
-    { title: "TV", icon: <FaTv />, path: "tv" },
-    { title: "Chromebook", icon: <FaLaptop />, path: "chromebook" },
-    { title: "Watch", icon: <MdWatch />, path: "watch" },
   ];
 
   const handleCategoryChange = (path: string) => {
@@ -111,7 +108,7 @@ const Index = () => {
           type="image/x-icon"
         />
       </Head>
-      <div className="w-full gap-5 h-10 flex items-center pt-5 pl-28">
+      <div className="w-full gap-5 h-10 flex items-center pt-5 pl-4">
         {buttons.map((item) => (
           <button
             key={item.path}

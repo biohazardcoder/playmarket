@@ -9,7 +9,6 @@ import { BadgeCheck, Gift, RefreshCcw, TrendingUp, TvMinimal } from 'lucide-reac
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SignInButton, useUser } from '@clerk/nextjs';
-import { log } from 'console';
 import Footer from '@/components/Footer';
 function ProductDetail() {
     const router = useRouter();

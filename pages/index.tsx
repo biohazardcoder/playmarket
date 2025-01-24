@@ -12,7 +12,6 @@ import Footer from "@/components/Footer";
 import { useUser } from "@clerk/nextjs";
 import Cookies from "js-cookie";
 import { getError, getPending, getUserInfo } from "@/toolkits/UserSlicer";
-import CustomSignInModal from "@/components/ui/custom-signin";
 
 const Index = () => {
   const router = useRouter();

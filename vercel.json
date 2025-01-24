@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@vercel/next"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
+        }
+    ],
+    "env": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_Y2FwaXRhbC1idXJyby03LmNsZXJrLmFjY291bnRzLmRldiQ",
+        "CLERK_SECRET_KEY": "sk_test_GoZHEFXhJL8v7dnLinONEb7pjMViTlAcxzuVjPAQGQ"
+    }
+}

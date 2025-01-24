@@ -38,7 +38,10 @@ function ProductDetail() {
             })
             setText("");
             setLike(0);
-            window.location.reload()
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+            console.log(response);
         } catch (error: any) {
             setError(error.message);
         } finally {
